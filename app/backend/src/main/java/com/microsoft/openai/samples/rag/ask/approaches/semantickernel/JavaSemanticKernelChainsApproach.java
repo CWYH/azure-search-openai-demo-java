@@ -71,7 +71,7 @@ public class JavaSemanticKernelChainsApproach implements RAGApproach<String, RAG
         Kernel semanticKernel = buildSemanticKernel(options);
 
         // STEP 1: Retrieve relevant documents using user question. It reuses the
-        // CognitiveSearchRetriever appraoch through the CognitiveSearchPlugin native function.
+        // CognitiveSearchRetriever approach through the CognitiveSearchPlugin native function.
         FunctionResult<String> searchContext = semanticKernel
                 .getPlugin("InformationFinder")
                 .get("SearchFromQuestion")
