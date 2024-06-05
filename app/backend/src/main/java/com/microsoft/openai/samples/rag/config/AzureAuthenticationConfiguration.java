@@ -20,8 +20,17 @@ public class AzureAuthenticationConfiguration {
     @Profile("dev")
     @Bean
     public TokenCredential localTokenCredential() {
-        return new IntelliJCredentialBuilder().build();
+        // return new IntelliJCredentialBuilder().build();
+        String tenantId = "bfe4028b-0cf2-4729-86d2-9d778c9245ae";
+        String clientId = System.getenv("ClientId");
+        String clientSecret = System.getenv("ClientSecret");
+        ClientSecretCredential clientSecretCredential = new ClientSecretCredentialBuilder()
+                .clientId(clientId)
+                .clientSecret(clientSecret)
+                .tenantId(tenantId)
+                .build();
         // return new AzureCliCredentialBuilder().build();
+        return clientSecretCredential;
     }
 
     @Profile("docker")
